@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Frappy Bird - Andrew</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="../../stylesheet/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type='text/css' media='all' href="../../stylesheet/webslides.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/webgl.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="wrap">
+        <p>
+          <a href="../../projects.html" title="Go Back"><b style="color:black"><i class="fa fa-arrow-left" aria-hidden="true"></i> Projects</b></a>
+        </p>
+      </div>
+    </header>
+
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 1280px; height: 720px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Frappy Bird</div>
+    </div>
+  </body>
+</html>
