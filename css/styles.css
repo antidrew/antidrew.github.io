@@ -1,182 +1,108 @@
+:root {
+    --font-mono: 'JetBrains Mono', monospace;
+    --color-bg: #fafafa;
+    --color-text: #2a2a2a;
+    --color-accent: #777f85;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --font-primary: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Body Styling */
 body {
-    font-family: var(--font-primary);
+    font-family: var(--font-mono);
     line-height: 1.6;
-    color: #333; /* Dark text */
-    background-color: #f9f9f9;
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
-/* Navigation Styling */
+.container {
+    max-width: min(90%, 1200px);
+    margin: 0 auto;
+    padding: 2rem;
+}
+
 nav {
-    background-color: #f9f9f9;
-    padding: 3rem 3rem;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    padding: 2rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
+    gap: 2rem;
 }
 
-nav ul li {
-    margin-left: 1rem;
-}
-
-nav ul li a {
-    font-family: var(--font-primary);
+nav a {
+    color: var(--color-text);
     text-decoration: none;
-    color: #333;
-    font-weight: normal;
-    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    transition: color 0.2s;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    color: #212930;
-    font-weight: bold;
-}
-
-.hero h1, .hero p {
-    max-width: 700px; /* Set consistent width for both */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Ensure no margin is affecting alignment */
-}
-
-.hero h1 {
-    margin-bottom: 60px; /* Space between header and paragraph */
-    font-size: 2.5rem;
-    color: #2a2a2a; /* Ensure it's readable */
-}
-
-.hero p {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #949292;
+nav a:hover {
+    color: var(--color-accent);
 }
 
 .hero {
-    height: 80vh;
-    background: url('../images/hero-background.jpg') no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start; /* Maintain left alignment */
-    text-align: left;
-    padding: 0 40px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 700px; /* Center the content within a fixed width */
+    margin-top: 10vh;
+    max-width: 800px;
 }
 
-h1, h2, h3 {
-    font-family: var(--font-primary);
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
 }
 
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+}
 
-/* Responsive Design */
+.description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #8bb0d7;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
-
-    nav ul li {
-        margin: 1rem 0;
+    
+    .hero {
+        margin-top: 5vh;
+        text-align: center;
     }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
+    
+    .description {
+        margin: 0 auto 3rem auto;
     }
 }
 
-.hmu-button {
-    display: inline-block;
-    background-color: rgb(34, 34, 34); /* Button background color */
-    color: rgb(239, 239, 239); /* Button text color */
-    padding: 10px 20px; /* Button padding */
-    text-align: center; /* Center text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
-    font-family: 'Montserrat', sans-serif; /* Font family */
-    font-weight: 700; /* Bold text */
-    position: absolute; /* Position it at the bottom center */
-    left: 50%; /* Center it */
-    transform: translateX(-50%); /* Adjust for centering */
-    bottom: 20px; /* Distance from the bottom */
-}
-
-.spacer {
-    height: 20vh; /* Height of the viewport */
-    margin-bottom: 20px; /* Additional space for scrolling */
-}
-
-.contact {
-    max-width: 600px; /* Set a max width for the contact section */
-    margin: 2rem auto; /* Center the contact section */
-    padding: 2rem;
-    border-radius: 8px; /* Slightly rounded corners */
-    text-align: left; /* Left-align text and buttons inside the contact section */
-}
-
-.contact-header {
-    font-size: 1.5rem;
-    margin-bottom: 1rem; /* Space between header and form */
-    padding-left: 10rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    box-sizing: border-box; /* Include padding and border in element's total width */
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #303030; /* Change border color on focus */
-    outline: none; /* Remove default outline */
-}
-
-.contact-button {
-    padding: 0.5rem 1rem; /* Add some padding */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Match with input styling */
-    background-color: #303030; /* Set button background color */
-    color: white; /* Text color */
-    cursor: pointer; /* Change cursor on hover */
-}
-
-.contact-button:hover {
-    background-color: #505050; /* Change background on hover */
+/* High-DPI screens */
+@media (min-resolution: 192dpi) {
+    body {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
 }
