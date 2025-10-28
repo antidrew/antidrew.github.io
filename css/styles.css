@@ -1,14 +1,12 @@
 :root {
     --font-mono: 'JetBrains Mono', monospace;
-    --color-bg: #fafafa;
-    --color-text: #2a2a2a;
-    --color-accent: #777f85;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --color-bg: #121212;
+    --color-text: #e0e0e0;
+    --color-accent: #d46018;
+    --nav-width: 160px;
+    --content-width: 760px;
+    --horizontal-padding: 2rem;
+    --edge-margin: 4rem; /* Add margin from screen edges */
 }
 
 body {
@@ -16,93 +14,140 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-bg);
-}
-
-.container {
-    max-width: min(90%, 1200px);
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-nav {
-    padding: 2rem;
-}
-
-nav ul {
-    list-style: none;
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
+    min-height: 100vh;
+    padding: var(--edge-margin); /* Add padding around entire body */
 }
-
-nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+/* Navbar styling */
+.sidenav {
+    width: var(--nav-width);
+    padding: 2rem 0;
+    position: fixed;
+    height: calc(100vh - 2 * var(--edge-margin));
+    background-color: var(--color-bg);
+    margin-left: var(--edge-margin);
+    padding-top: calc(var(--edge-margin) + 2rem); /* Align vertically with H1 */
 }
-
-nav a:hover {
-    color: var(--color-accent);
-}
-
-.hero {
-    margin-top: 10vh;
-    max-width: 800px;
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 1rem;
-}
-
 .subtitle {
-    font-size: clamp(1rem, 3vw, 1.5rem);
     color: var(--color-accent);
+    font-size: 0.9rem;
     margin-bottom: 2rem;
 }
 
-.description {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    max-width: 600px;
-    margin-bottom: 3rem;
+/* Project list styling */
+.project-list {
+    list-style: none;
+    padding: 0;
 }
 
-.button {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background-color: var(--color-accent);
-    color: white;
+.project-list li {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.project-date {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    min-width: 4rem;
+}
+
+.project-info h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.project-info a {
+    color: var(--color-text);
     text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    transition: background-color 0.2s;
+    transition: color 0.3s ease;
 }
 
-.button:hover {
-    background-color: #8bb0d7;
+.project-info a:hover {
+    color: var(--color-accent);
+}
+
+
+.sidenav a {
+    display: block;
+    padding: 0.8rem 1.5rem; /* Reduced padding */
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem; /* Smaller font size */
+    opacity: 0.8; /* Slightly faded by default */
+}
+
+.sidenav a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.sidenav a.active {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+/* Main content layout */
+.container {
+    margin-left: calc(var(--nav-width) + var(--edge-margin));
+    padding: 2rem;
+    width: calc(100% - var(--nav-width) - 2 * var(--edge-margin));
+    max-width: var(--content-width);
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-    nav ul {
-        justify-content: center;
+@media (min-width: 1920px) {
+    :root {
+        --content-width: 1200px;
+        --nav-width: 200px;
+        --edge-margin: 6rem; /* Larger margins for bigger screens */
     }
     
-    .hero {
-        margin-top: 5vh;
-        text-align: center;
-    }
-    
-    .description {
-        margin: 0 auto 3rem auto;
+    .container {
+        padding: 3rem 4rem;
     }
 }
 
-/* High-DPI screens */
-@media (min-resolution: 192dpi) {
+@media (max-width: 768px) {
+    :root {
+        --nav-width: 140px;
+        --content-width: 100%;
+        --edge-margin: 2rem; /* Smaller margins for tablets */
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
     body {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
+        padding: 1rem;
+    }
+
+    :root {
+        --edge-margin: 1rem; /* Even smaller margins for mobile */
+    }
+
+    .sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-left: 0;
+        padding: 0.5rem 0;
+    }
+    
+    .sidenav a {
+        display: inline-block;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .container {
+        margin-left: 0;
+        padding: 1rem;
+        width: 100%;
     }
 }
